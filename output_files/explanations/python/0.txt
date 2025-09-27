@@ -1,0 +1,2 @@
+Returns a list of all manifested attendees if no attendee is specified,
+    else displays the attendee manifest.

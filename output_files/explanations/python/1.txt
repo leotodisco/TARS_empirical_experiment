@@ -1,0 +1,11 @@
+Calculate a model light curve.
+
+		:param params: Transit parameters
+		:type params: A `TransitParams` instance
+
+		:return: Relative flux 
+		:rtype: ndarray
+
+		:Example:
+
+		>>> flux = m.light_curve(params)
