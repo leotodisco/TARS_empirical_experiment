@@ -243,3 +243,7 @@ Icon[
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.java
+*.vsix
+*.md
