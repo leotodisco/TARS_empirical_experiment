@@ -1,1 +1,4 @@
-Primary Controller Entry Point
+Remove any files or directories whose last modified time greater than persistMinutes
+@param dir clean starting here
+@param sbuff status messages here, may be null
+@param isRoot delete empty directories, bit not root directory 

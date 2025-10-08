@@ -1,0 +1,8 @@
+parsing command string, file already open.
+
+@param nc      apply command to this file
+@param command : command string
+@param out     send output here
+@param ct      allow task to be cancelled; may be null.
+@return true if successful
+@throws IOException on write error

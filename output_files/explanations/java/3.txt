@@ -1,8 +1,16 @@
-ncdump, parsing command string, file already open.
+Acquire a FileCacheable from the cache, and lock it so no one else can use it.
+If not already in cache, open it with FileFactory, and put in cache.
+<p/>
+Call FileCacheable.close() when done, (rather than FileCacheIF.release() directly) and the file is then released instead of closed.
+<p/>
+If cache size goes over maxElement, then immediately (actually in 100 msec) schedule a cleanup in a background thread.
+This means that the cache should never get much larger than maxElement, unless you have them all locked.
 
-@param nc      apply command to this file
-@param command : command string
-@param out     send output here
-@param ct      allow task to be cancelled; may be null.
-@return true if successful
-@throws IOException on write error
+@param factory     use this factory to open the file if not in the cache; may not be null
+@param hashKey     unique key for this file. If null, the location will be used
+@param location    file location, may also used as the cache name, will be passed to the NetcdfFileFactory
+@param buffer_size RandomAccessFile buffer size, if <= 0, use default size
+@param cancelTask  user can cancel, ok to be null.
+@param spiObject   sent to iosp.setSpecial() if not null
+@return FileCacheable corresponding to location.
+@throws IOException on error
